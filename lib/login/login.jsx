@@ -1,11 +1,19 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from "react-native"
 import { useFonts, RobotoSlab_400Regular, RobotoSlab_500Medium, RobotoSlab_600SemiBold } from "@expo-google-fonts/roboto-slab"
+import ButtonConfirm from "../components/button_entrar_cadastrar";
 export default function Login() {
     let [roboto600, roboto500, roboto400] = useFonts({
         RobotoSlab_600SemiBold, RobotoSlab_500Medium, RobotoSlab_400Regular
     })
     return (
-        <View>
+        <View style={styles.container}>
+            <View style={styles.containerLogo}>
+                <Image
+                    style={styles.logo}
+                    source={require('../../assets/icons/Logo.png')}
+                />
+            </View>
+
             <View>
                 <Text style={styles.title}>Faça seu login</Text>
             </View>
@@ -36,14 +44,39 @@ export default function Login() {
                     />
                 </View>
             </View>
-            <View>
-                <TouchableOpacity style={styles.botao}><Text style={styles.textoBotao}>Entrar</Text></TouchableOpacity>
+            <ButtonConfirm />
+            <View style={styles.containerEsqueceuSenha}>
+                <Text style={styles.esqueceuSenha}
+                    onPress={() => alert("apertou")}>
+                    Esqueci minha senha
+                </Text>
             </View>
+            <View style={styles.footer}>
+                <View style={styles.containerFooter} >
+                    <Image
+                        style={styles.criar}
+                        source={require('../../assets/icons/Criar.png')}
+                    />
+                    <View style={{width:'20px'}}>
+
+                    </View>
+                    <Text style={styles.criarText}>
+                        Criar uma conta
+                    </Text>
+
+                </View>
+            </View>
+
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    container:{
+        width:'100%',
+        justifyContent:'center',
+        alignItems:'center'
+    },
     inputs: {
         display: "flex",
         flexDirection: 'column',
@@ -82,22 +115,58 @@ const styles = StyleSheet.create({
         width: '20px',
         height: '18px'
     },
-    botao: {
-        display:'flex',
-        justifyContent:'center',
-        marginTop: '24px',
-        backgroundColor: "#FF9000",
-        width: "340px",
-        height: "56px",
-        borderRadius: "10px"
+    
+    containerLogo: {
+        alignItems: 'center',
+        marginBottom: "64px",
     },
-    textoBotao: {
-        fontFamily: "RobotoSlab_500Medium",
+    logo: {
+        width: "206px",
+        height: "120px"
+    },
+    containerEsqueceuSenha: {
+        marginTop: "24px"
+    },
+    esqueceuSenha: {
+        fontFamily: 'RobotoSlab_400Medium',
         fontStyle: "normal",
-        fontSize: "16px",
-        lineHeight: "21px",
+        fontWeight: "400",
+        fontSize: "14px",
+        lineHeight: "18px",
         textAlign: "center",
-        color: "#312E38"
 
+        color: "#F4EDE8",
+    },
+    footer: {
+        width:'100%',
+        height:'60px',
+        position: 'fixed',
+        bottom: 0,
+        
+    },
+    containerFooter:{
+        borderTopWidth: '1px',
+        borderTopColor: "#232129",
+        width:'100%',
+        height:'100%',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        
+    },
+    criar: {
+        width: '20px',
+        height: '20px',
+
+    },
+    criarText: {
+        fontFamily: 'RobotoSlab_400Medium',
+        fontStyle: "normal",
+        fontSize: '14px',
+        lineHeight: '18px',
+        textAlign: 'center',
+
+        color: "#FF9000",
     }
 });
