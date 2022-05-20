@@ -1,11 +1,12 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from "react-native"
 import { useFonts, RobotoSlab_400Regular, RobotoSlab_500Medium, RobotoSlab_600SemiBold } from "@expo-google-fonts/roboto-slab"
 import ButtonConfirm from "../components/button_entrar_cadastrar";
-export default function Login() {
+export default function Login({navigation}) {
     let [roboto600, roboto500, roboto400] = useFonts({
         RobotoSlab_600SemiBold, RobotoSlab_500Medium, RobotoSlab_400Regular
     })
     return (
+        
         <View style={styles.container}>
             <View style={styles.containerLogo}>
                 <Image
@@ -44,7 +45,7 @@ export default function Login() {
                     />
                 </View>
             </View>
-            <ButtonConfirm />
+            <ButtonConfirm texto="Entrar" />
             <View style={styles.containerEsqueceuSenha}>
                 <Text style={styles.esqueceuSenha}
                     onPress={() => alert("apertou")}>
@@ -53,16 +54,23 @@ export default function Login() {
             </View>
             <View style={styles.footer}>
                 <View style={styles.containerFooter} >
-                    <Image
-                        style={styles.criar}
-                        source={require('../../assets/icons/Criar.png')}
-                    />
-                    <View style={{width:'20px'}}>
+                    <TouchableOpacity 
+                    style={styles.containerFooter}
+                    onPress={()=>{
+                        navigation.navigate("Cadastro");
+                    }}
+                    >
+                        <Image
+                            style={styles.criar}
+                            source={require('../../assets/icons/Criar.png')}
+                        />
+                        <View style={{width:'20px'}}>
 
-                    </View>
-                    <Text style={styles.criarText}>
-                        Criar uma conta
-                    </Text>
+                        </View>
+                        <Text style={styles.criarText}>
+                            Criar uma conta
+                        </Text>
+                    </TouchableOpacity>
 
                 </View>
             </View>
@@ -72,7 +80,12 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
+    
     container:{
+        flex: 1,
+        backgroundColor: '#312E38',
+        alignItems: 'center',
+        justifyContent: 'center',
         width:'100%',
         justifyContent:'center',
         alignItems:'center'
@@ -128,7 +141,7 @@ const styles = StyleSheet.create({
         marginTop: "24px"
     },
     esqueceuSenha: {
-        fontFamily: 'RobotoSlab_400Medium',
+        fontFamily: 'RobotoSlab_400Regular',
         fontStyle: "normal",
         fontWeight: "400",
         fontSize: "14px",
@@ -161,7 +174,7 @@ const styles = StyleSheet.create({
 
     },
     criarText: {
-        fontFamily: 'RobotoSlab_400Medium',
+        fontFamily: 'RobotoSlab_400Regular',
         fontStyle: "normal",
         fontSize: '14px',
         lineHeight: '18px',
