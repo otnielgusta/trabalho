@@ -45,7 +45,12 @@ export default function Login({navigation}) {
                     />
                 </View>
             </View>
-            <ButtonConfirm texto="Entrar" />
+            <ButtonConfirm 
+                texto="Entrar" 
+                onPress={() => {
+                    navigation.navigate("HomePage");
+                }}
+                />
             <View style={styles.containerEsqueceuSenha}>
                 <Text style={styles.esqueceuSenha}
                     onPress={() => alert("apertou")}>
@@ -128,7 +133,6 @@ const styles = StyleSheet.create({
         width: '20px',
         height: '18px'
     },
-    
     containerLogo: {
         alignItems: 'center',
         marginBottom: "64px",

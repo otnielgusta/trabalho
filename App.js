@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Cadastro from './lib/cadastro/cadastro';
 import ConfirmaCadastro from './lib/cad_concluido/cad_concluido';
+import HomePage from './lib/home/home_page';
 import Login from './lib/login/login';
 import SplashPage from './lib/splash/splash_page';
 
@@ -33,6 +34,11 @@ export default function App() {
         <Stack.Screen 
           name='ConfirmaCadastro'
           component={ConfirmaCadastro}
+        />
+        <Stack.Screen 
+          name='HomePage'
+          component={HomePage}
+          
         />
       </Stack.Navigator>
     </NavigationContainer>
